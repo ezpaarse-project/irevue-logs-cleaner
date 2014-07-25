@@ -15,7 +15,7 @@ var patterns = {
   identd: '(-)',
   login: '(-)',
   date: '(\\[.+?\\])',
-  method: '(GET|POST|HEAD|OPTIONS|OST|PROPFIND)',
+  method: '(GET|POST|HEAD|OPTIONS|OST|PROPFIND|PUT|T)',
   url: '(\/.*? HTTP\/1\.[10])',
   httpStatus: '([0-9]{3})',
   size: '([0-9]+|-)'
