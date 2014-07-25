@@ -3,6 +3,11 @@
  * Add spaces to irevue bad formated logs
  * Usage:
  * zcat hippo.irevues.access.2014.07.22.log.gz | ./irevue-logs-cleaner.njs | gzip -9 > hippo.irevues.access.2014.07.22.log.ok.gz 
+ *
+ * Bad line example:
+ * ---[22/Jul/2014:00:00:05 +0200]POST /solr/statistics/update?wt=javabin&version=1 HTTP/1.120040
+ * Good line (with spaces as a separator):
+ * - - - [22/Jul/2014:00:00:05 +0200] POST /solr/statistics/update?wt=javabin&version=1 HTTP/1.1 200 40
  */
 
 var patterns = {
