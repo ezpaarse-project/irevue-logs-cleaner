@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ROOTPATH=""
+ROOTPATH="/home/kerphi/tmp/irevue-logs-cleaner/hippo/2014"
+SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/." && pwd )"
 
 LOGFILES="
 ./2014-04/hippo.irevues.access.2014.04.04.log.gz
@@ -116,11 +117,15 @@ LOGFILES="
 for LOGFILE in $LOGFILES
 do
   BADLOGFILE="${LOGFILE}.ko"
-  if [ -f $ROOTPATH/$BADLOGFILE ]; then
-    echo "$ROOTPATH/$BADLOGFILE en cours de traitement"
+  GOODLOGFILE="${LOGFILE}.ok"
+  if [ -f $ROOTPATH/$LOGFILE ]; then
+    echo "$ROOTPATH/$LOGFILE en cours de traitement"
+    cp -f $ROOTPATH/$LOGFILE $BADLOGFILE
+    echo "$ROOTPATH/$LOGFILE copie de sauvegarde dans .ko réalisée"
     zcat $ROOTPATH/$BADLOGFILE | \
-      ./irevue-logs-cleaner.njs | \
-      gzip -9 > $ROOTPATH/$LOGFILE
-    echo "$ROOTPATH/$BADLOGFILE traité"
+      $SCRIPT_PATH/irevue-logs-cleaner.njs | \
+      gzip -9 > $GOODLOGFILE
+    echo "$ROOTPATH/$LOGFILE nettoyé dans .ok"
+    echo "$ROOTPATH/$LOGFILE traité"
   fi 
 done
