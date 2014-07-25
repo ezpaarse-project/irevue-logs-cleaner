@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/home/kerphi/.nvm/v0.10.24/bin/node
 /**
  * Add spaces to irevue bad formated logs
  * Usage:
@@ -53,9 +53,9 @@ function parseLogToJson(log) {
   } else {
     // show the not handle line on stderr
     process.stderr.write(log + '\n');
-    // but also output it to stdout because part of a file could be correct
-    // example: hippo.irevues.access.2014.07.23.log
-    process.stdout.write(log + '\n');
+    // // but also output it to stdout because part of a file could be correct
+    // // example: hippo.irevues.access.2014.07.23.log
+    // process.stdout.write(log + '\n');
     return {};
   }
 }
