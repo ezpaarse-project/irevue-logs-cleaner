@@ -51,7 +51,11 @@ function parseLogToJson(log) {
       size: match[8]
     }
   } else {
+    // show the not handle line on stderr
     process.stderr.write(log + '\n');
+    // but also output it to stdout because part of a file could be correct
+    // example: hippo.irevues.access.2014.07.23.log
+    process.stdout.write(log + '\n');
     return {};
   }
 }
@@ -65,6 +69,6 @@ function createNiceLog(jsonLog) {
   niceLine = niceLine.trim();
 
   if (niceLine !== '') {
-    process.stdout.write(niceLine + '\n');    
+    process.stdout.write(niceLine + '\n');
   }
 }
